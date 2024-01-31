@@ -34,6 +34,7 @@ const obj2 = { 3 : "c", 4 : "d"}
 const obj3 = { obj1, obj2}
 console.log(obj3);
 
+
 //  In this situation again the same problem we havent concationate the vlues of the objects it is combined like objects having two diffret objects
 
 const obj4 = Object.assign( {}, obj1 , obj2);
