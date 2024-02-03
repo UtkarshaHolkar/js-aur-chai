@@ -1,5 +1,5 @@
 
-//+++++++++++++++ Arrow function ++++++++++++++
+//+++++++++++++++ Arrow function +++++++++++++
 
 // this can't be used inside arrow function
 const abc = () => {
