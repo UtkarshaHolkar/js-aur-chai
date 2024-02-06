@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>--EVENTS--</title>
+</head>
+<body style="background-color: #212121; color: aliceblue;">
+    <h1>amazing pics</h1>
+    <div>
+        <ul id="images">
+        <li><img width="200px" id="book1" src="https://i.pinimg.com/236x/a7/4e/ee/a74eeedaddac8f072cfacaa184587eba.jpg" alt=""></li>
+        <li><img width="200px" id="book2" src="https://i.pinimg.com/236x/6f/c8/d8/6fc8d8d55f89b88249862c9b341c0982.jpg" alt=""></li>
+        <li><img width="200px" id="book3" src="https://i.pinimg.com/564x/f0/fd/50/f0fd50400301a4a0aa11b200316b3870.jpg" alt=""></li>
+        <!-- ONCLICK EVENT HERE -->
+         <li><img width="200px" id="book4" src="https://i.pinimg.com/236x/97/fd/44/97fd4467203aec6b42b95f7a819238a5.jpg" alt="" onclick="alert('book4')"></li> 
+        <li><a style="color: aliceblue;" href="http://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // Javascript me saare events sequentially hi run hote h but there are some exceptions
+    // javascript is sequentially run language, but sometimes we ignore this and uses async js
+    // One of the exceptions is events because they are not called sequentially, jb bhi koi activity hoti h tb invoke hota h..(mouse hover, keyboard click etc.)
+
+    // writing the event in img tag is not feasible, in book4 we called the event in img tag, but in react, react is a scalable libraryso we can put events in that byttons in react.. 
+
+    // so our second approach to fire event will be :-
+
+   document.getElementById('book4').onclick = function(){
+    // alert("book 4");
+   }
+
+//    This approach is also not good, when we are putting an onclick event on id then there might be problem with "id", because we do not get so much information, here we should use event listner becuase it provides propagation
+
+// so here comes our third and the best approach
+
+document.getElementById('book4').addEventListener('click', function(){
+    // alert('book4 again');
+}, false)
+// here the third parameter is default 'false'
+
+// one more approach :- by using 'attachEvent()''
+// one more approach :- by using jQuery --> onEventistener()
+
+// ----------------Event object--------------
+
+// whenver we listen event in that function we gen an event object, this is very useful..
+
+document.getElementById('book4').addEventListener('click', function(e){ console.log(e)}, false)
+// e is that event object..
+
+// interview question can be like this-->
+// 1) jb bhi user ne image click kri h uska time bata do, so with the help of this event object we can do this..
+//  2) kuch aisa banao ki jb bhi div pr click kru toh ek circle create ho jaye, toh aapko event object m, view m uski width height milri h or uski location bhi milri h (x,y) vaha pr ek naya event fire krdo, jisme jo bhi circle h voh krdo create
+
+// in event object m se humko ye pdhna h -->
+// type, timestamp, defaultPrevented, target, toElement, srcElement, currentTarget
+// clientX, clientY, screenX, screenY
+// altkey, ctrlkey, shiftkey, keyCode
+
+// ----------EVENT PROPAGTION-----------
+
+// Two types of contect is there :-
+
+// 1) event bubbling-- default i.e false(third parameter in eventListener func)
+// 2) event capturing -- true
+
+//+++++++++++++++ Event bubbling +++++++++++++++++
+
+//  event bubbling me inner element se jakr upper element jata h mtlb phle inner element call hga fir uske upr wala fir uske upr wala
+// yaha pr phle (img) fir (li) fir (ul)
+
+document.getElementById('images').addEventListener('click', function(e){
+    console.log("clicked inside the ul");
+}, false)
+
+document.getElementById('book4').addEventListener('click', function(e){
+    console.log("clicked book4");
+}, false)
+
+//+++++++++++++++ Event Capturing ++++++++++++++++
+
+// yaha pr outer se inner (top se bottom)
+// // yaha pr phle (ul) fir (li) fir (img)
+
+document.getElementById('images').addEventListener('click', function(e){
+    console.log("clicked inside the ul");
+}, true)
+
+document.getElementById('book4').addEventListener('click', function(e){
+    console.log("clicked book4");
+}, true)
+
+/// if you dont want to have this propagation then we can simply use stopPropagation()
+
+
+document.getElementById('book4').addEventListener('click', function(e){
+    console.log("clicked book4");
+    e.stopPropagation();
+}, true)
+
+</script>
+</html>
