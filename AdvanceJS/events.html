@@ -100,5 +100,51 @@ document.getElementById('book4').addEventListener('click', function(e){
     e.stopPropagation();
 }, true)
 
+// if you want to cahnge the default behaviour of the event, here we would like to change that the google link should not propagate s on the google page when we clicked the link...
+
+document.getElementById('google').addEventListener('click', function(e){
+    e.preventDefault();
+    console.log("google clicked");
+}, false)
+
+// Now, trying different
+// task : when we click the image that should be vanish 
+
+// document.querySelector('#images').addEventListener('click',function(e){
+//     // yaha pr target humko batyega ki jaha se bhi event fire hua h uske baare m specific info.
+
+//     //parent node isliye chahiye becoz img hata denge pr (li) k bullet point reh jayega toh hum pure li ko hata denge,
+
+//     console.log(e.target.parentNode);
+//     // isko hatane k liye
+//     let removeVar = e.target.parentNode
+//     removeVar.remove(); // first approach
+
+//  //second approach
+//    // removeVar.parentNode.removeChild(removeVar); 
+// })
+
+// but agar google ke link pr click krenge toh pura pura ki pura (ul) udh jayega kuki google li ka parent ul he 
+//  ya fir agr aapne kisi li pr click kr diya toh pura ki pura ul udh jayega 
+
+// toh hum check lga skte h 
+
+
+document.querySelector('#images').addEventListener('click',function(e){
+
+    console.log(e.target.parentNode);
+     // here tagname will tell us what type of tag is there on which we clicked (img, li, or ul)
+
+    console.log(e.target.tagName);
+
+    if(e.target.tagName === 'IMG'){
+        console.log(e.target.id)
+        let removeVar = e.target.parentNode;
+        removeVar.remove();
+    }
+    
+})
+
+
 </script>
 </html>
