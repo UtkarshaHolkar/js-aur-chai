@@ -19,3 +19,4 @@ execute one line of code at a time
 
  non BLOCKING CODE -->does not block the flow of program (execution)
 
+// this is about the async js // remove this line just for commit
