@@ -18,3 +18,5 @@ execute one line of code at a time
  BLOCKING CODE --> block the flow of program 
 
  non BLOCKING CODE -->does not block the flow of program (execution)
+
+ 
