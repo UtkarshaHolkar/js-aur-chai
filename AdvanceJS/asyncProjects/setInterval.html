@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <title>   setInterval       </title> -->
+</head>
+<body>
+    <h1>chai</h1>
+    <button id="stop">stop</button>
+    <button id="start">start</button>
+</body>
+<script>
+
+    // const chngIn = function(str){
+    //     // console.log("hi")
+    //     console.log(str);
+    // }
+    // it has third parameter where we can pass the values...
+
+    // const inter = setInterval(chngIn,2000, "hiii");
+
+    //we need to stop this, wrna ye chlta hi jayega
+    // clearInterval(inter)
+
+    //our target is that: 
+    // jaise hi hum start p click krre start ho jaye printing
+    // jaise hi stop button click krre vo stop ho jaye
+
+    document.getElementById('start').addEventListener('click') = function chngIn(str){
+        // console.log("hi")
+        console.log(str);
+    }
+    
+    const inter = setInterval(chngIn,2000, "hiii");
+
+    document.getElementById('stop').addEventListener('click') = function(){
+        clearInterval(inter)
+    }
+
+</script>
+</html>
