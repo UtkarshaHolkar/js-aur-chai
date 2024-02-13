@@ -7,8 +7,40 @@
 </head>
 <body>
     <h1>chai</h1>
+    <button id="stop">stop</button>
 </body>
 <script>
+    setTimeout(function(){
+        console.log("hi")
+    },2000)
+
+    // we can give refernce as well --------
+
+    const myfunc =function(){
+        console.log("hi")
+    }
+
+    setTimeout(myfunc,4000)
+    //THis method also calls the api
+
+    const ChangeText = function(){
+        document.querySelector('h1').innerHTML = "hellllew from me"
+    }
+    const chngeMe = setTimeout(ChangeText, 2000)
+
+    // now we want ki agr hum 2 seconds k phle hi button pr click kr de toh "hellllew from me" na aaye or "hi" hi rahe vaha
+    // SO with the help of clearTimeout
     
+    //clearTimeout ko reference chiye hota h ki konse setTimeout k h ye clearTimeout
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(chngeMe)
+        console.log("stop")
+    })
+   
+
+    // diff b/w setTimeout & setInterval
+    // settimeout -----> ek partucular time k baad apka kaam ek baar ho jayega
+    // setInterval ----->  aapka kaam repeat hota rhega specific time k baaad
 </script>
 </html>
