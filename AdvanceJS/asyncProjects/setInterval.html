@@ -28,16 +28,24 @@
     // jaise hi hum start p click krre start ho jaye printing
     // jaise hi stop button click krre vo stop ho jaye
 
-    document.querySelector('#start').addEventListener('click', function chngIn(str){
-        // console.log("hi")
-        console.log(str);
-    }
-    )
-    const inter = setInterval(chngIn,2000, "hiii");
+    let hello;
 
-    document.querySelector('#stop').addEventListener('click', function(){
-        clearInterval(inter)
+    const startChange = function(str){
+        // console.log("hi")
+        hello = setInterval(chngIn, 2000, "hiiii");
+
+        function chngIn(str){
+            console.log(str);
+            document.querySelector('h1').innerHTML = str
+        }
     }
-)
+
+    const stopChange = function(){
+        clearInterval(hello)
+    }
+
+    document.querySelector('#start').addEventListener('click', startChange)
+
+    document.querySelector('#stop').addEventListener('click', stopChange)
 </script>
 </html>

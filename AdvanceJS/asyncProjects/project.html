@@ -21,10 +21,26 @@
     }
     console.log(randomC());
 
+    let intervalID;
+    
     const startChange = function(){
-        document.body.style.backgroundColor
+
+        // intervalID = setInterval(changebg,2000)
+        
+        if(!intervalID){
+            intervalID = setInterval(changebg,2000)
+        }
+
+        function changebg(){
+            document.body.style.backgroundColor = randomC();
+        }
     };
-    const stopChange = function(){};
+    const stopChange = function(){
+        clearInterval(intervalID)
+        // agr ye line nhi bhi likhe tb bhi code humara same work krega but diff itna rhega ki hr baar hum intervaliD ko overwrite kr rhe h toh clearInterval k baad hum isse null set krdnge
+        intervalID = null
+        // pr ye krne k baad stop nhi hoga, because ab iske liye humme ab if condition m check krna hga ki intervalId null ho toh kya !!!!
+    };
 
     document.querySelector('#start').addEventListener('click', startChange)
     document.querySelector('#stop').addEventListener('click', stopChange)
