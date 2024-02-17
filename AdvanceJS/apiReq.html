@@ -23,6 +23,27 @@
    //open method takes two parameters 1) method 2)string
    //method m kis type ki req h (get , put, post)
    xhr.open('GET', reqUrl)
+
+   // jb hum req bhjte h toh status code change hote h baar baar, we can onbserve it :-
+
+   xhr.onreadystatechange = function(){
+      console.log(xhr.readyState);
+      if(xhr.readyState === 4){
+         const data = this.responseText
+         console.log(data);
+         console.log(data.followers) // undefined
+         // why this is undefined ??
+         // becoz
+         console.log(typeof data); // string
+         // we can't use dot operator for a string
+         // most case m url se data string m aata h
+
+         // to convert it in json 
+         const dataConverted = JSON.parse(this.responseText)
+         console.log(typeof dataConverted); //object
+         console.log(dataConverted.followers) 
+      }
+   }
       
    // open ko call krne k liye --
    xhr.send()
