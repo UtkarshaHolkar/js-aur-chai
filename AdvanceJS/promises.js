@@ -48,3 +48,106 @@ new Promise(function(resolve, reject){
 }).then(function(){
     console.log("async 2 resolved");
 })
+
+
+// 3rd promise
+
+
+const promise3 = new Promise(function(resolve, reject){
+    setTimeout(function(){
+        // resolve() m hum data bhi pass kr skte h mostly hum object k form m krte h...
+        resolve({username: "chai", email : "hey@example.com"})
+    }, 1000);
+})
+
+ // resolve() m hum data krke ab then m lene k liye 
+promise3.then(function(user){
+   console.log(user);
+})
+
+// 4th promise
+
+const promise4 = new Promise(function(resolve, reject){
+    setTimeout(() => {
+        let error = false
+        if(!error){
+            resolve({username :" utk ", email :"ek@sda.com"})
+        }
+        else{
+            reject('ERROR : Something went wrong')
+        }
+    }, 1000);
+})
+
+const user1 = promise4.then((user) => {
+  console.log(user);
+//  return user.username 
+ /// ye print nhi hoga ye ek error dega
+})
+
+// so we can do chaining here--->
+
+promise4
+.then((user) => {
+  console.log(user);
+  return user.username
+})
+.then((username)=>{
+    console.log(username);
+})
+.catch(function(error){
+    console.log(error);
+})
+
+// there is one more case i.e finally
+
+promise4
+.then((user) => {
+  console.log(user);
+  return user.username
+})
+.then((username)=>{
+    console.log(username);
+})
+.catch(function(error){
+    console.log(error);
+}).finally(()=>{
+    console.log("the promise is either resolved or rejected ");
+})
+
+// 5th promise
+
+const promise5 = new Promise(function(resolve, reject){
+    setTimeout(() => {
+        let error = false
+        if(!error){
+            resolve({username :" utk ", email :"ek@sda.com"})
+        }
+        else{
+            reject('ERROR : Something went wrong')
+        }
+    }, 1000);
+})
+
+// instead of .then and .catch we'll use async await, this will wait for sometime & agr vo kaam ho jata h tb hi aage bdhta h wn=rna error de dega
+
+async function consumeFunc(){
+    const res = await promise5
+    console.log(res);
+}
+
+consumeFunc(); 
+
+//agr aapne kuch request kri or vo nhi aa payi toh error aa jaynge or async or await jo h errors ko handle nhi kr skte h , toh hum ( try catch ) use krke vo resolve kr skte h
+
+
+async function consumeFunc(){
+    try {
+        const res = await promise5
+    console.log(res);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+consumeFunc(); 
