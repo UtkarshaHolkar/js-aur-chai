@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body style="background-color: #212121; color: white;">
+   Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.
+</body>
+<script>
+   //This is ajax request in nowadays we use fetch()
+   // XMLHttpRequest is a method, from which we'lll create an object through which we can send or receive the data
+   // creating an object
+
+   const reqUrl = 'http://api.github.com/users/utkarshaholkar'
+   const xhr = new XMLHttpRequest()
+   //open method takes two parameters 1) method 2)string
+   //method m kis type ki req h (get , put, post)
+   xhr.open('GET', reqUrl)
+      
+   // open ko call krne k liye --
+   xhr.send()
+
+</script>
+</html>
