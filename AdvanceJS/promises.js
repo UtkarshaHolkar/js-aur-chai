@@ -151,3 +151,43 @@ async function consumeFunc(){
 }
 
 consumeFunc(); 
+
+async function getAllusers(){
+    try {
+        const res = await fetch('http://jsonplaceholder.typicode.com/users')
+    const data = res.json()
+    console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getAllusers()
+
+// yaha pr values nhi aayengi because res.json b thoda time lgayega change krne m toh isliye waha pr bhi await likhna pdhega 
+
+async function getAllusers(){
+    try {
+        const res = await fetch('http://jsonplaceholder.typicode.com/users')
+    const data = await res.json()
+    console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getAllusers()
+
+// issi ko .then.catch s kaise krnge
+
+fetch('http://jsonplaceholder.typicode.com/users').then((response)=>{
+    return response.json()
+})
+.then((data)=>{
+    console.log(data);
+})
+.catch((e)=> console.log(e))
+
+// yaha pr sbse pehle fetch m jo url wala data h vo sbse pehle print hua uske baad humara jo bhi upr ka code h vo print hua 
+// WHY ?????????????//
+
