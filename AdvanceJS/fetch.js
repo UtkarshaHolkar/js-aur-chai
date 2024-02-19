@@ -15,3 +15,5 @@
 
 // fetch k liye ek special queue bnti h vo h micro task queue or fetch queue // its very fast or we can say its a most priority queue..
 //Thats the reason firstly fetch code ran and output was shown ...
+
+// fetch--- domparts m kaam krta h
